@@ -1,0 +1,895 @@
+<% layout('layouts/boilerplate')%>
+
+<main class="main">
+    <div class="intro-slider-container mb-0">
+        <div class="intro-slider owl-carousel owl-theme owl-nav-inside owl-light" data-toggle="owl" data-owl-options='{"nav": false, "dots": false}'>
+            <div class="intro-slide" style="background-image: url(/images/home/slider1.jpg);">
+                <div class="container intro-content text-center">
+                    <h1 class="intro-title text-white">Exclusive Designer Garmenet</h1><!-- End .intro-title -->
+                </div><!-- End .intro-content -->
+            </div><!-- End .intro-slide -->
+
+            <div class="intro-slide" style="background-image: url(/images/home/slider2.jpg);">
+                <div class="container intro-content text-center">
+                    <h1 class="intro-title text-white">Exclusive Designer Garmenet</h1><!-- End .intro-title -->
+                </div><!-- End .intro-content -->
+            </div><!-- End .intro-slide -->
+        </div><!-- End .intro-slider owl-carousel owl-theme -->
+
+        <span class="slider-loader text-white"></span><!-- End .slider-loader -->
+    </div><!-- End .intro-slider-container -->
+
+    <div class="brands-border owl-carousel owl-simple mb-5 text-center" data-toggle="owl" 
+        data-owl-options='{
+            "nav": false, 
+            "dots": false,
+            "margin": 0,
+            "loop": false,
+            "responsive": {
+                "0": {
+                    "items":2
+                },
+                "420": {
+                    "items":3
+                },
+                "600": {
+                    "items":4
+                },
+                "900": {
+                    "items":5
+                },
+                "1024": {
+                    "items":6
+                },
+                "1360": {
+                    "items":7
+                }
+            }
+        }'>
+
+    </div><!-- End .owl-carousel -->
+
+    <div class="container">
+        <div class="banner-group">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="banner banner-border">
+                        <a href="#">
+                            <img src="/images/home/offer-banner1.jpg" alt="Banner">
+                        </a>
+                    </div><!-- End .banner -->
+                </div><!-- End .col-md-6-->
+
+                <div class="col-md-4">
+                    <div class="banner banner-border-hover">
+                        <a href="#">
+                            <img src="/images/home/offer-banner2.jpg" alt="Banner">
+                        </a>
+                    </div><!-- End .banner -->
+
+                    <div class="banner banner-border-hover">
+                        <a href="#">
+                            <img src="/images/home/offer-banner3.jpg" alt="Banner">
+                        </a>
+                    </div><!-- End .banner -->
+                </div><!-- End .col-md-6 -->
+            </div><!-- End .row -->
+        </div><!-- End .banner-group -->
+    </div><!-- End .container -->
+
+    <div class="mb-4"></div><!-- End .mb-6 -->
+
+    <div class="container">
+        <div class="heading heading-center mb-3">
+            <h2 class="title">Best Sellers</h2><!-- End .title -->
+        </div><!-- End .heading -->
+
+        <div class="tab-content tab-content-carousel">
+            <div class="tab-pane p-0 fade show active" id="trendy-all-tab" role="tabpanel" aria-labelledby="trendy-all-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+
+                    <% 
+                        let productCategory = ""
+                        function findProductById(productId) {
+                            for (let category in productsData) {
+                                if (productsData[category][productId]) {
+                                    productCategory = category
+                                    return productsData[category][productId];
+                                }
+                            }
+                            return null;
+                        }
+
+                        for (let product of featuredProduct["best-seller"]) {
+                            const bestproduct  = findProductById(product)
+                            
+                    %>
+
+                    <div class="product product-2">
+                        <figure class="product-media">
+                            <a href="/products/<%= productCategory %>/<%= bestproduct.name %>">
+                                <img src="<%= bestproduct.imageUrl %>" alt="Product image" class="product-image">
+                            </a>
+
+
+                            <div class="product-action product-action-transparent">
+                                <a href="/products/<%= productCategory %>/<%= bestproduct.name %>" class="btn-product btn-cart"><span>Order Now</span></a>
+                            </div>
+                        </figure>
+
+                        <div class="product-body text-center">
+                            <div class="text-dark">
+                                <a href="/products/<%= productCategory %>/<%= bestproduct.name %>">Type of Pack: <%= bestproduct.typeOfPack %> PES</a>
+                            </div>
+                            <h3 class="product-title text-uppercase"><a href="/products/<%= productCategory %>/<%= bestproduct.name %>" class="font-weight-bold"><%= bestproduct.name %></a></h3><!-- End .product-title -->
+                            <div class=" text-center font-weight-bold">
+                                $ <%= bestproduct.price %>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+            <div class="tab-pane p-0 fade" id="trendy-women-tab" role="tabpanel" aria-labelledby="trendy-women-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+            <div class="tab-pane p-0 fade" id="trendy-men-tab" role="tabpanel" aria-labelledby="trendy-men-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+                </div>
+            </div><!-- .End .tab-pane -->
+            <div class="tab-pane p-0 fade" id="trendy-access-tab" role="tabpanel" aria-labelledby="trendy-access-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+        </div><!-- End .tab-content -->
+    </div><!-- End .container -->
+
+    <div class="container">
+        <div class="heading heading-center mb-3">
+            <h2 class="title">Featured Products</h2><!-- End .title -->
+        </div><!-- End .heading -->
+
+        <div class="tab-content tab-content-carousel">
+            <div class="tab-pane p-0 fade show active" id="trendy-all-tab" role="tabpanel" aria-labelledby="trendy-all-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+                    <% 
+                        let featuredProductCategory = ""
+                        function findProductByIdFea(productId) {
+                            for (let category in productsData) {
+                                if (productsData[category][productId]) {
+                                    featuredProductCategory = category
+                                    return productsData[category][productId];
+                                }
+                            }
+                            return null;
+                        }
+
+                        for (let product of featuredProduct["featured-product"]) {
+                            const bestproduct  = findProductByIdFea(product)
+                             
+                    %>
+
+                    <div class="product product-2">
+                        <figure class="product-media">
+                            <a href="/products/<%= featuredProductCategory %>/<%= bestproduct.name %>">
+                                <img src="<%= bestproduct.imageUrl %>" alt="Product image" class="product-image">
+                            </a>
+
+
+                            <div class="product-action product-action-transparent">
+                                <a href="/products/<%= featuredProductCategory %>/<%= bestproduct.name %>" class="btn-product btn-cart"><span>Order Now</span></a>
+                            </div>
+                        </figure>
+
+                        <div class="product-body text-center">
+                            <div class="text-dark">
+                                <a href="/products/<%= featuredProductCategory %>/<%= bestproduct.name %>">Type of Pack: <%= bestproduct.typeOfPack %> PES</a>
+                            </div>
+                            <h3 class="product-title text-uppercase"><a href="/products/<%= featuredProductCategory %>/<%= bestproduct.name %>" class="font-weight-bold"><%= bestproduct.name %></a></h3><!-- End .product-title -->
+                            <div class=" text-center font-weight-bold">
+                                $ <%= bestproduct.price %>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+
+
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+            <div class="tab-pane p-0 fade" id="trendy-women-tab" role="tabpanel" aria-labelledby="trendy-women-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+            <div class="tab-pane p-0 fade" id="trendy-men-tab" role="tabpanel" aria-labelledby="trendy-men-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+            <div class="tab-pane p-0 fade" id="trendy-access-tab" role="tabpanel" aria-labelledby="trendy-access-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+        </div><!-- End .tab-content -->
+    </div><!-- End .container -->
+
+    <div class="container">
+        <div class="heading heading-center mb-3">
+            <h2 class="title">Leather Bags</h2><!-- End .title -->
+        </div><!-- End .heading -->
+
+        <div class="tab-content tab-content-carousel">
+            <div class="tab-pane p-0 fade show active" id="trendy-all-tab" role="tabpanel" aria-labelledby="trendy-all-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+                    <% 
+                        let leatherProductCategory = ""
+                        function findProductByIdLeather(productId) {
+                            for (let category in productsData) {
+                                if (productsData[category][productId]) {
+                                    leatherProductCategory = category
+                                    return productsData[category][productId];
+                                }
+                            }
+                            return null;
+                        }
+
+                        for (let product of featuredProduct["leather-bags"]) {
+                            const bestproduct  = findProductByIdLeather(product)
+                             
+                    %>
+
+                    <div class="product product-2">
+                        <figure class="product-media">
+                            <a href="/products/<%= leatherProductCategory %>/<%= bestproduct.name %>">
+                                <img src="<%= bestproduct.imageUrl %>" alt="Product image" class="product-image">
+                            </a>
+
+
+                            <div class="product-action product-action-transparent">
+                                <a href="/products/<%= leatherProductCategory %>/<%= bestproduct.name %>" class="btn-product btn-cart"><span>Order Now</span></a>
+                            </div>
+                        </figure>
+
+                        <div class="product-body text-center">
+                            <div class="text-dark">
+                                <a href="/products/<%= leatherProductCategory %>/<%= bestproduct.name %>">Type of Pack: <%= bestproduct.typeOfPack %> PES</a>
+                            </div>
+                            <h3 class="product-title text-uppercase"><a href="/products/<%= leatherProductCategory %>/<%= bestproduct.name %>" class="font-weight-bold"><%= bestproduct.name %></a></h3><!-- End .product-title -->
+                            <div class=" text-center font-weight-bold">
+                                $ <%= bestproduct.price %>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+            <div class="tab-pane p-0 fade" id="trendy-women-tab" role="tabpanel" aria-labelledby="trendy-women-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+            <div class="tab-pane p-0 fade" id="trendy-men-tab" role="tabpanel" aria-labelledby="trendy-men-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+            <div class="tab-pane p-0 fade" id="trendy-access-tab" role="tabpanel" aria-labelledby="trendy-access-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+        </div><!-- End .tab-content -->
+    </div><!-- End .container -->
+
+    <div class="container">
+        <div class="heading heading-center mb-3">
+            <h2 class="title">Trousers</h2><!-- End .title -->
+        </div><!-- End .heading -->
+
+        <div class="tab-content tab-content-carousel">
+            <div class="tab-pane p-0 fade show active" id="trendy-all-tab" role="tabpanel" aria-labelledby="trendy-all-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+                    <% 
+                        let trouserProductCategory = ""
+                        function findProductByIdTrouser(productId) {
+                            for (let category in productsData) {
+                                if (productsData[category][productId]) {
+                                    trouserProductCategory = category
+                                    return productsData[category][productId];
+                                }
+                            }
+                            return null;
+                        }
+
+                        for (let product of featuredProduct["trousers"]) {
+                            const bestproduct  = findProductByIdTrouser(product)
+                            
+                    %>
+
+                    <div class="product product-2">
+                        <figure class="product-media">
+                            <a href="/products/<%= trouserProductCategory %>/<%= bestproduct.name %>">
+                                <img src="<%= bestproduct.imageUrl %>" alt="Product image" class="product-image">
+                            </a>
+
+
+                            <div class="product-action product-action-transparent">
+                                <a href="/products/<%= trouserProductCategory %>/<%= bestproduct.name %>" class="btn-product btn-cart"><span>Order Now</span></a>
+                            </div>
+                        </figure>
+
+                        <div class="product-body text-center">
+                            <div class="text-dark">
+                                <a href="/products/<%= trouserProductCategory %>/<%= bestproduct.name %>">Type of Pack: <%= bestproduct.typeOfPack %> PES</a>
+                            </div>
+                            <h3 class="product-title text-uppercase"><a href="/products/<%= trouserProductCategory %>/<%= bestproduct.name %>" class="font-weight-bold"><%= bestproduct.name %></a></h3><!-- End .product-title -->
+                            <div class=" text-center font-weight-bold">
+                                $ <%= bestproduct.price %>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+
+
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+            <div class="tab-pane p-0 fade" id="trendy-women-tab" role="tabpanel" aria-labelledby="trendy-women-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+            <div class="tab-pane p-0 fade" id="trendy-men-tab" role="tabpanel" aria-labelledby="trendy-men-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+            <div class="tab-pane p-0 fade" id="trendy-access-tab" role="tabpanel" aria-labelledby="trendy-access-link">
+                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                    data-owl-options='{
+                        "nav": false, 
+                        "dots": true,
+                        "margin": 20,
+                        "loop": false,
+                        "responsive": {
+                            "0": {
+                                "items":2
+                            },
+                            "480": {
+                                "items":2
+                            },
+                            "768": {
+                                "items":3
+                            },
+                            "992": {
+                                "items":4
+                            },
+                            "1200": {
+                                "items":4,
+                                "nav": true
+                            }
+                        }
+                    }'>
+                </div><!-- End .owl-carousel -->
+            </div><!-- .End .tab-pane -->
+        </div><!-- End .tab-content -->
+    </div><!-- End .container -->
+
+
+    <div class="mb-5"></div><!-- End .mb-5 -->
+
+    <div class="video-banner video-banner-bg bg-image text-center" style="background-image: url(/images/home/slider1.jpg)">
+        <div class="container">
+            <h3 class="video-banner-title h1 text-white"><span>Check Out</span><strong>New Collection <i></i></strong></h3><!-- End .video-banner-title -->
+            <a href="/demo-video1.mp4" class="btn-video btn-iframe"><i class="icon-play"></i></a>
+        </div><!-- End .container -->
+    </div><!-- End .video-banner bg-image -->
+
+        
+    <div class="mb-2"></div><!-- End .mb-2 -->
+
+    <div class="container">
+        <div class="cta cta-separator mb-5">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="cta-wrapper cta-text text-center">
+                        <h3 class="cta-title">Shop Social</h3><!-- End .cta-title -->
+                        <p class="cta-desc">Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p><!-- End .cta-desc -->
+                
+                        <div class="social-icons social-icons-colored justify-content-center">
+                            <a href="https://www.facebook.com/arjumand.ahmad1?mibextid=ZbWKwL" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/s.k_noor_sons" class="social-icon social-instagram" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                            <a href="https://www.pinterest.com/arjumandahmad/?invite_code=7806ed0cf29449dda36822d71ee78caf&sender=833869824663762241" class="social-icon social-pinterest" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+                        </div><!-- End .soial-icons -->
+                    </div><!-- End .cta-wrapper -->
+                </div><!-- End .col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="cta-wrapper text-center">
+                        <h3 class="cta-title">Newsletter</h3><!-- End .cta-title -->
+                        <form action="#" class="mt-4">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Enter your Email Address" aria-label="Email Adress" required>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary btn-rounded" type="submit"><i class="icon-long-arrow-right"></i></button>
+                                </div><!-- .End .input-group-append -->
+                            </div><!-- .End .input-group -->
+                        </form>
+                    </div><!-- End .cta-wrapper -->
+                </div><!-- End .col-lg-6 -->
+            </div><!-- End .row -->
+        </div><!-- End .cta -->
+    </div><!-- End .container -->
+
+    
+    <div class="about-testimonials bg-light-2 pt-6 pb-6">
+        <div class="container">
+            <h2 class="title text-center mb-3">What Customer Say About Us</h2><!-- End .title text-center -->
+
+            <div class="owl-carousel owl-simple owl-testimonials-photo" data-toggle="owl" 
+                data-owl-options='{
+                    "nav": false, 
+                    "dots": true,
+                    "margin": 20,
+                    "loop": false,
+                    "responsive": {
+                        "1200": {
+                            "nav": true
+                        }
+                    }
+                }'>
+                <blockquote class="testimonial testimonial-icon text-center">
+                    
+                    <p>I love Aladdin’s cave product line and design very much. My clients are happy with new designs and unique.</p>
+                    <cite>
+                        Aliza Chinoy
+                        <span>UK, London</span>
+                    </cite>
+                </blockquote><!-- End .testimonial -->
+
+                <blockquote class="testimonial testimonial-icon text-center">
+                    
+                    <p>I appreciate commitment of Aladdin’s cave Company for timely delivery of goods.</p>
+
+                    <cite>
+                        Olavi Johnson
+                        <span>Finland</span>
+                    </cite>
+                </blockquote><!-- End .testimonial -->
+
+                <blockquote class="testimonial testimonial-icon text-center">
+                    
+                    <p>Free size Dresses and Jump suits are excellent and client buy in pairs. Thanks to Aladdin’s cave</p>
+
+                    <cite>
+                        Vikki Lorenzo
+                        <span>Italy</span>
+                    </cite>
+                </blockquote><!-- End .testimonial -->
+
+                <blockquote class="testimonial testimonial-icon text-center">
+                    
+                    <p>Dresses Fabrics are unique and I love it. My Client demand same fabric clothes. I am thankful to Aladdin’s cave for such fabric items.</p>
+
+                    <cite>
+                        Fonzo Isabella
+                        <span>Spain</span>
+                    </cite>
+                </blockquote><!-- End .testimonial -->
+
+                <blockquote class="testimonial testimonial-icon text-center">
+                    
+                    <p>Genuine and Trustworthy. I received my order rightly what I place. Thanks to Aladdin’s cave.</p>
+
+                    <cite>
+                        Alex Colman
+                        <span>US</span>
+                    </cite>
+                </blockquote><!-- End .testimonial -->
+
+                <blockquote class="testimonial testimonial-icon text-center">
+                    
+                    <p>Aladdin’s cave Trousers are good & comfortable and I made bulk order.</p>
+
+                    <cite>
+                        Matteo Daniel
+                        <span>Germany</span>
+                    </cite>
+                </blockquote><!-- End .testimonial -->
+
+                <blockquote class="testimonial testimonial-icon text-center">
+                    <p>I loved the experience while doing business with Aladdin’s cave from past 10 years. He is genuine and man of word. Thanks</p>
+
+                    <cite>
+                        Rose Mabello
+                        <span>Chilie</span>
+                    </cite>
+                </blockquote><!-- End .testimonial -->
+
+                <blockquote class="testimonial testimonial-icon text-center">
+                    
+                    <p>My repeat order of Kaptan & Vintage Sari Silk dresses from client makes me good deal with Aladdin’s cave. It is reasonable. Look forward for long term deal.</p>
+
+                    <cite>
+                        Suzzane Loudie
+                        <span>France</span>
+                    </cite>
+                </blockquote><!-- End .testimonial -->
+
+                <blockquote class="testimonial testimonial-icon text-center">
+                    
+                    <p>I find Aladdin’s cave good manufacturer of trendy Jumpsuit, Skirt and Trouser. He suits to our demand and offer range of services.</p>
+
+                    <cite>
+                        Karl Krzysztof
+                        <span>Poland</span>
+                    </cite>
+                </blockquote><!-- End .testimonial -->
+
+                <blockquote class="testimonial testimonial-icon text-center">
+                    
+                    <p>Product lines of Dresses are good and bulk pack price is cost effective. I enjoyed it.</p>
+
+                    <cite>
+                        Beatrix Hedrik
+                        <span>Netherland</span>
+                    </cite>
+                </blockquote><!-- End .testimonial -->
+
+            </div><!-- End .testimonials-slider owl-carousel -->
+        </div><!-- End .container -->
+    </div><!-- End .bg-light-2 pt-5 pb-6 -->
+</main><!-- End .main -->

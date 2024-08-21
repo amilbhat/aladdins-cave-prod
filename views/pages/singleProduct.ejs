@@ -1,0 +1,153 @@
+<% layout("layouts/boilerplate") %>
+
+<main class="main" style="margin-top: 8rem;">
+    <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+        <div class="container d-flex align-items-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Products</a></li>
+                <li class="breadcrumb-item active text-uppercase" aria-current="page"><%= productId %></li>
+            </ol>
+
+        </div><!-- End .container -->
+    </nav><!-- End .breadcrumb-nav -->
+
+    <div class="page-content">
+        <div class="container">
+            <div class="product-details-top">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="product-gallery product-gallery-vertical">
+                            <div class="row">
+                                <figure class="product-main-image">
+                                    <img id="product-zoom" src="<%= product.imageUrl %>" data-zoom-image="<%= product.imageUrl %>" alt="product image">
+
+                                    <a href="#" id="btn-product-gallery" class="btn-product-gallery">
+                                        <i class="icon-arrows"></i>
+                                    </a>
+                                </figure><!-- End .product-main-image -->
+                            </div><!-- End .row -->
+                        </div><!-- End .product-gallery -->
+                    </div><!-- End .col-md-6 -->
+
+                    <div class="col-md-6">
+                        <div class="product-details">
+                            <h1 class="product-title text-uppercase"><%= product.name %></h1><!-- End .product-title -->
+
+                            <div class="product-price font-weight-bold">
+                                $<%= product.price %>
+                            </div><!-- End .product-price -->
+
+                            <div class="product-content">
+                                <p>Type of Pack: <%= product.typeOfPack %> PES </p>
+                            </div><!-- End .product-content -->
+
+                            <div class="details-filter-row details-row-size">
+                                <label for="qty">Qty:</label>
+                                <div class="product-details-quantity">
+                                    <input type="number" disabled id="qty" class="form-control" value="<%= product.typeOfPack %>">
+                                </div><!-- End .product-details-quantity -->
+                            </div><!-- End .details-filter-row -->
+
+                            <div class="product-details-action">
+                                <a href="https://wa.me/+919797797089/?text=Hi! I’m interested in ordering the <%= product.name %>.%0ACould you please provide more details.Thanks!" target="_blank" class="btn-product btn-cart"><span>WhatsApp Now</span></a>
+                            </div><!-- End .product-details-action -->
+                            <div class="product-details-action">
+                                <a href="mailto:example@example.com?subject=Inquiry About Product <%= product.name %> &body=Hi,%0A%0AI’m%20interested%20in%20<%= product.name %> .%20Could%20you%20please%20provide%20more%20details%20%0A%0AThanks!" target="_blank" class="btn-product btn-cart"><span>Email Now</span></a>
+                            </div><!-- End .product-details-action -->
+
+                            <div class="product-details-footer">
+                                <div class="product-cat">
+                                    <span>SKU:</span>
+                                    <a href="#"><%= product.name %></a>
+                                </div><!-- End .product-cat -->
+                            </div><!-- End .product-details-footer -->
+                        </div><!-- End .product-details -->
+                    </div><!-- End .col-md-6 -->
+                </div><!-- End .row -->
+            </div><!-- End .product-details-top -->
+
+            <div class="product-details-tab">
+                <ul class="nav nav-pills justify-content-center" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Description</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
+                        <div class="product-desc-content">
+                            <h3>Product Information</h3>
+                            <p>We are the renowned manufacture's and suppliers of leather Skirt. Keeping in mind ever-evolving requirements our respected clients, we are offering a premium quality range of leather Skirt. ETC </p>
+
+                        </div><!-- End .product-desc-content -->
+                    </div><!-- .End .tab-pane -->
+                </div><!-- End .tab-content -->
+            </div><!-- End .product-details-tab -->
+
+            <h2 class="title text-center mb-4">You May Also Like</h2><!-- End .title text-center -->
+
+            <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                data-owl-options='{
+                    "nav": false, 
+                    "dots": true,
+                    "margin": 20,
+                    "loop": false,
+                    "responsive": {
+                        "0": {
+                            "items":1
+                        },
+                        "480": {
+                            "items":2
+                        },
+                        "768": {
+                            "items":3
+                        },
+                        "992": {
+                            "items":4
+                        },
+                        "1200": {
+                            "items":4,
+                            "nav": true,
+                            "dots": false
+                        }
+                    }
+                }'>
+
+                
+                <% 
+                    let count = 0
+                    for(let key in productsData[type]) { 
+                        if (count >= 10) {
+                            break
+                        }
+                        count++;
+                %>
+
+                    <div class="product product-7 text-center">
+                        <figure class="product-media">
+                            <a href="/products/<%= type %>/<%= productsData[type][key].name %>">
+                                <img src="<%= productsData[type][key].imageUrl %>" alt="Product image" class="product-image">
+                            </a>
+
+                            <div class="product-action">
+                                <a href="#" class="btn-product btn-cart"><span>Order Now</span></a>
+                            </div>
+                        </figure>
+
+                        <div class="product-body">
+                            <h3 class="product-title"><a href="/products/<%= type %>/<%= productsData[type][key].name %>" class="text-uppercase font-weight-bold"><%= productsData[type][key].name %></a></h3>
+                            <div class="text-center font-weight-bold">
+                                $ <%= productsData[type][key].price %>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <% } %>
+
+
+
+            </div><!-- End .owl-carousel -->
+        </div><!-- End .container -->
+    </div><!-- End .page-content -->
+</main><!-- End .main -->

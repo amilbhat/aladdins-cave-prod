@@ -1,0 +1,63 @@
+<% layout("layouts/boilerplate") %>
+
+
+<main class="main">
+    <div class="page-header text-center" style="background-image: url('/images/page-header-bg.jpg')">
+        <div class="container">
+            <h1 class="page-title"><%= type %></h1>
+        </div>
+    </div>
+    <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/products/<%= type %>"><%= type %></a></li>
+            </ol>
+        </div>
+    </nav>
+
+    <div class="page-content">
+        <div class="container">
+            <div class="entry-container max-col-3" data-layout="fitRows">
+
+                <% for(let key in productsData[type]) { %>
+                    
+                    <% if (productsData[type].hasOwnProperty(key)) { %>
+                        <div class="entry-item lifestyle shopping col-sm-6 col-lg-4">
+                            <article class="entry entry-grid text-center">
+                                <figure class="entry-media">
+                                    <a href="/products/<%= type %>/<%= productsData[type][key].name %>">
+                                        <!-- Image -->
+                                        <img src="<%= productsData[type][key].imageUrl %>" alt="image desc">
+                                    </a>
+                                </figure>
+
+                                <div class="entry-body">
+
+                                    <h2 class="entry-title">
+                                        <!-- Name -->
+                                        <a href="/products/<%= type %>/<%= productsData[type][key].name %>" class="text-uppercase"><%= productsData[type][key].name %></a>
+                                    </h2>
+
+                                    <div class="entry-cats font-weight-bold text-danger">
+                                        <!-- Price -->
+                                        $ <%= productsData[type][key].price %>
+                                    </div>
+
+                                    <div class="entry-content">
+                                        <!-- Type of Pack -->
+                                        <p class="font-weight-bold"> Type of Pack: <%= productsData[type][key].typeOfPack %> PES </p>
+                                        <a href="/products/<%= type %>/<%= productsData[type][key].name %>" class="read-more">Order Now</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                    <% } %>
+                <% } %>
+
+
+            </div>
+        </div>
+    </div>
+</main>
